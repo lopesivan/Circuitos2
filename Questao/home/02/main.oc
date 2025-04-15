@@ -1,4 +1,4 @@
-% a.oc - a
+% main.oc - a
 % Maintainer: Ivan Lopes
 
 
@@ -22,50 +22,25 @@ A = [
     -G2    , (G2+G3+G4), -(G3+G4)
     -G1    , -(G3+G4)  , (G1+G3+G4)
 ]
+A = [
+	(G1+G2)         , -G2                 , -G1
+    (-G2 -20*G2*G4) , (G2+G3+G4 +20*G2*G4), -(G3+G4)
+    (-G1 +20*G2*G4) , (-(G3+G4) -20*G2*G4),  (G1 + G3 + G4)
+]
 
 B = [
 	I1
-    (20*Ix*G4)
-	(-I1 -20*Ix*G4) ]
+    0
+	-I1]
 
 S = A\B
 EA = S(1,1)
 EB = S(2,1)
 ED = S(3,1)
 
-(EA-EB)/G2
-
-% disp(S)
-
-	% I1; 20*Ix*G4; -I1 -20*Ix*G4
-% A = [
-% 	(G1+G2)       , -G2                  , -G1
-%     -G2 + 20*G2*G4, (G2+G3+G4) - 20*G2*G4, -(G3+G4)
-%     -G1 - 20*G2*G4, -(G3+G4)   + 20*G2*G4, (G1+G3+G4)
-% ]
-% B= [
-% 	I1
-% 	0
-% 	-I1
-% ]
-
-% S = A\B
-% EA = S(1,1)
-% EB = S(2,1)
-% ED = S(3,1)
-
-% (EA-EB)/G2
-% (EA-ED)/G1
-
-
-% A = [
-% 	(G1+G2)       , -G2
-%     -G2 + 20*G2*G4, (G2+G3+G4) - 20*G2*G4
-% ]
-% B= [
-% 	I1
-% 	0
-% ]
-
-
-% S = A\B
+Ix = (EA-EB)*G2
+Ia = (EA-ED)*G1
+%EC-ED=20*Ix
+EC=20*Ix+ED
+Ib = (EB-EC)*G4
+Ic = (EB-ED)*G3
