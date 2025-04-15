@@ -1,0 +1,40 @@
+% test.oc - test
+% Maintainer: Ivan Lopes
+
+% 01-questao.m - 01-questao
+% Maintainer: Ivan Lopes
+
+
+% Questao 1
+
+R1  = 1;
+R2  = 1;
+R3  = 1;
+R4  = 1;
+R5  = 1;
+R6  = 1;
+R7  = 1;
+R8  = 1;
+R9  = 1;
+R10 = 1;
+R11 = 1;
+R12 = 1;
+R13 = 1;
+R14 = 1;
+R15 = 1;
+R16 = 1;
+R17 = 1;
+R18 = 1;
+V   = 40;
+
+a = z_p([R13+R14, R12])+R11
+b = z_p([R5+R6, R4])+R3
+
+x1 = R15+R17+R18+R16
+x2 = R7+R8+R9+R10
+
+req = R1+z_p([x1,x2])+R2
+I = V/req
+
+[I1,I2] = div_c(I,x1,x2)
+
