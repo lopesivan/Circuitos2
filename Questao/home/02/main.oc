@@ -41,6 +41,7 @@ ED = S(3,1)
 Ix = (EA-EB)*G2
 Ia = (EA-ED)*G1
 %EC-ED=20*Ix
-EC=20*Ix+ED
+EC = 20*Ix+ED
 Ib = (EB-EC)*G4
 Ic = (EB-ED)*G3
+

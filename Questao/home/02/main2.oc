@@ -1,0 +1,72 @@
+% main.oc - a
+% Maintainer: Ivan Lopes
+
+j = 1i; % unidade imaginária em MATLAB
+
+Z1 = 10
+Z2 = 1+2j
+Z3 = -5j
+Z4 = 5
+I1 = 10.6 % to_rd(10.6, 0)  % <10.6, 0°>
+
+G1= 1/Z1
+G2= 1/Z2
+G3= 1/Z3
+G4= 1/Z4
+
+A = [
+    (G1+G2), -G2       , -G1
+    -G2    , (G2+G3+G4), -(G3+G4)
+    -G1    , -(G3+G4)  , (G1+G3+G4)
+]
+
+k = 20*G2*G4;
+
+A = [
+    (G1+G2)  , -G2          , -G1
+    (-G2 -k) , (G2+G3+G4 +k), -(G3+G4)
+    (-G1 +k) , (-(G3+G4) -k),  (G1 + G3 + G4)
+]
+
+B = [
+    I1
+    0
+    -I1]
+
+EC = 0
+
+A = [
+    (G1+G2)  , -G2
+    (-G2 -k) , (G2+G3+G4 +k)
+]
+
+B = [
+    I1
+    0
+]
+
+S = A\B
+disp("----8<---.----8<---.----8<---")
+EA = S(1,1)
+EB = S(2,1)
+EC = 0
+ED = 0
+
+Ix = (EA-EB)*G2
+Ia = (EA-EC)*G1
+Ib = (EB-EC)*G4
+Ic = (EB-ED)*G3
+
+
+disp("----8<---.----8<---.----8<---")
+Ix =  3.7600 + 1.6800i
+k  = 20*Ix
+EA = EA + k
+EB = EA + k
+EC = K
+ED = 0
+
+Ix = (EA-EB)*G2
+Ia = (EA-EC)*G1
+Ib = (EB-EC)*G4
+Ic = (EB-ED)*G3

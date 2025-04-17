@@ -1,0 +1,15 @@
+% b.oc - b
+% Maintainer: Ivan Lopes
+
+
+EA = -0.023095 + 6.400616i;
+EB = -0.4231 - 2.7994i;
+EC =  6.7769 + 56.8006i;
+ED = -68.423 + 23.201i;
+
+
+
+EA = EA - ED
+EB = EB - ED
+EC = EC - ED
+ED = ED - ED
