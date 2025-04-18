@@ -58,22 +58,3 @@ Ib = (EB-EC)*G4
 Ic = (EB-ED)*G3
 
 
-% disp("----8<---.----8<---.----8<---")
-% Ix =  3.7600 + 1.6800i
-% k  = 20*Ix
-% EA = EA + k
-% EB = EA + k
-% EC = K
-% ED = 0
-
-% Ix = (EA-EB)*G2
-% Ia = (EA-EC)*G1
-% Ib = (EB-EC)*G4
-% Ic = (EB-ED)*G3
-
-
-
-% EA = -0.023095 + 6.400616i
-% ED = -68.423 + 23.201i
-% R = EA - ED
-

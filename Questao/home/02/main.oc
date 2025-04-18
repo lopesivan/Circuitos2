@@ -39,9 +39,9 @@ EB = S(2,1)
 ED = S(3,1)
 
 Ix = (EA-EB)*G2
-Ia = (EA-ED)*G1
-%EC-ED=20*Ix
 EC = 20*Ix+ED
+
+Ia = (EA-ED)*G1
 Ib = (EB-EC)*G4
 Ic = (EB-ED)*G3
 
