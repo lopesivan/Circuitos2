@@ -33,7 +33,6 @@ B = [
     0
     -I1]
 
-EC = 0
 
 A = [
     (G1+G2)  , -G2
@@ -49,24 +48,32 @@ S = A\B
 disp("----8<---.----8<---.----8<---")
 EA = S(1,1)
 EB = S(2,1)
-EC = 0
+Ix = (EA-EB)*G2
+EC = 20*Ix
 ED = 0
 
 Ix = (EA-EB)*G2
-Ia = (EA-EC)*G1
+Ia = (EA-ED)*G1
 Ib = (EB-EC)*G4
 Ic = (EB-ED)*G3
 
 
-disp("----8<---.----8<---.----8<---")
-Ix =  3.7600 + 1.6800i
-k  = 20*Ix
-EA = EA + k
-EB = EA + k
-EC = K
-ED = 0
+% disp("----8<---.----8<---.----8<---")
+% Ix =  3.7600 + 1.6800i
+% k  = 20*Ix
+% EA = EA + k
+% EB = EA + k
+% EC = K
+% ED = 0
 
-Ix = (EA-EB)*G2
-Ia = (EA-EC)*G1
-Ib = (EB-EC)*G4
-Ic = (EB-ED)*G3
+% Ix = (EA-EB)*G2
+% Ia = (EA-EC)*G1
+% Ib = (EB-EC)*G4
+% Ic = (EB-ED)*G3
+
+
+
+% EA = -0.023095 + 6.400616i
+% ED = -68.423 + 23.201i
+% R = EA - ED
+
