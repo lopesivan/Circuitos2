@@ -1,47 +1,45 @@
 % main.oc - a
 % Maintainer: Ivan Lopes
 
-
 j = 1i; % unidade imaginária em MATLAB
 
-Z1 = 10
-Z2 = 1+2j
-Z3 = -5j
-Z4 = 5
+V1 = to_rd(8, 50)  % <8, 50°>
+w  = 1E3
+L  = 50E-3
+C  = 2E-6
 
-I1 = to_rd(10.6, 0)  % <10.6, 30°>
-Ix = 3.76 +1.68j
+XL = L*w
+XC = 1/(C*w)
+R1 = 4E3
+R2 = 2E3
+ZC = -j*XC
+ZL = j*XL
 
-G1= 1/Z1
-G2= 1/Z2
-G3= 1/Z3
-G4= 1/Z4
 
 A = [
-	(G1+G2), -G2       , -G1
-    -G2    , (G2+G3+G4), -(G3+G4)
-    -G1    , -(G3+G4)  , (G1+G3+G4)
-]
-A = [
-	(G1+G2)         , -G2                 , -G1
-    (-G2 -20*G2*G4) , (G2+G3+G4 +20*G2*G4), -(G3+G4)
-    (-G1 +20*G2*G4) , (-(G3+G4) -20*G2*G4),  (G1 + G3 + G4)
+	(R1+ZC), -ZC
+    R2/2-ZC , R2/2+(ZC+ZL)
 ]
 
 B = [
-	I1
+	V1
     0
-	-I1]
+]
 
 S = A\B
-EA = S(1,1)
-EB = S(2,1)
-ED = S(3,1)
+X = S(1,1)
+Y = S(2,1)
+Z = (X+Y)/2
+Vo= R2*Z
+Io= X-Y
+disp("------------------")
+disp("resposta:")
+disp("------------------")
+disp("")
 
-Ix = (EA-EB)*G2
-EC = 20*Ix+ED
-
-Ia = (EA-ED)*G1
-Ib = (EB-EC)*G4
-Ic = (EB-ED)*G3
+X  = to_pd(X)           % polar display
+Y  = to_pd(Y)
+Z  = to_pd(Z)
+Vo = to_pd(Vo)
+Io = to_pd(Io)
 
