@@ -43,3 +43,8 @@ Z  = to_pd(Z)
 Vo = to_pd(Vo)
 Io = to_pd(Io)
 
+X = S(1,1)
+Y = S(2,1)
+VC = (X-Y)*ZC
+VC = to_pd(VC)
+
