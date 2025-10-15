@@ -15,10 +15,11 @@ R2 = 2E3
 ZC = -j*XC
 ZL = j*XL
 
-
+k1=-R2/2
+k2=R2/2
 A = [
 	(R1+ZC), -ZC
-    R2/2-ZC , R2/2+(ZC+ZL)
+    -k1-ZC , -k2+(R2+ZC+ZL)
 ]
 
 B = [
@@ -29,8 +30,8 @@ B = [
 S = A\B
 X = S(1,1)
 Y = S(2,1)
-Z = (X+Y)/2
-Vo= R2*Z
+Z = (X-Y)/2
+Vo= R2*(Z+Y)
 Io= X-Y
 disp("------------------")
 disp("resposta:")
@@ -43,8 +44,4 @@ Z  = to_pd(Z)
 Vo = to_pd(Vo)
 Io = to_pd(Io)
 
-X = S(1,1)
-Y = S(2,1)
-VC = (X-Y)*ZC
-VC = to_pd(VC)
 
