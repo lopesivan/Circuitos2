@@ -1,0 +1,51 @@
+% main.oc - a
+% Maintainer: Ivan Lopes
+
+j = 1i; % unidade imaginária em MATLAB
+
+V1 = to_rd(24, 0)   % <24,  0°>
+I1 = to_rd(2, -90)  % <2, -90°>
+I2 = to_rd(4, 0)    % <4,   0°>
+I3 = I1 + I2
+
+w  = 8
+L  = 1/4
+C  = 1/32
+
+XL = L*w
+XC = 1/(C*w)
+R1 = 4
+R2 = 2
+ZC = -j*XC
+ZL = j*XL
+
+
+A = [
+	(R1+R2),     -R1,        0,  -R2
+	    -R1, (R1+ZL),      -ZL,    0
+	      0,     -ZL,  (R2+ZL),  -R2
+	    -R2,       0,      -R2, 2*R2
+]
+
+B = [
+    0
+	V1
+    0
+    0
+]
+
+S = A\B
+a = S(1,1)
+b = S(2,1)
+c = S(3,1)
+d = S(4,1)
+d = I3
+Vo= a*ZC
+
+disp("------------------")
+disp("resposta:")
+disp("------------------")
+disp("")
+
+%X  = to_pd(X)           % polar display
+
