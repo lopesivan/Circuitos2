@@ -3,10 +3,9 @@
 
 j = 1i; % unidade imaginária em MATLAB
 
-V1 = to_rd(24, 0)   % <24,  0°>
-I1 = to_rd(2, -90)  % <2, -90°>
-I2 = to_rd(4, 0)    % <4,   0°>
-I3 = I1 + I2
+V1 = to_rd(24, 0)
+I1 = to_rd(2, -90)
+I2 = to_rd(4, 0)
 
 w  = 8
 L  = 1/4
@@ -19,33 +18,29 @@ R2 = 2
 ZC = -j*XC
 ZL = j*XL
 
+k1=2*ZL
+k2=-2*ZL
 
 A = [
-	(R1+R2),     -R1,        0,  -R2
-	    -R1, (R1+ZL),      -ZL,    0
-	      0,     -ZL,  (R2+ZL),  -R2
-	    -R2,       0,      -R2, 2*R2
+	(R1+R2+ZC),     -R1
+	     -k1-R1, -k2+(R1+ZL)
 ]
 
 B = [
-    0
+    I1*R2
 	V1
-    0
-    0
 ]
 
 S = A\B
-a = S(1,1)
-b = S(2,1)
-c = S(3,1)
-d = S(4,1)
-d = I3
-Vo= a*ZC
+x = S(1,1)
+y = S(2,1)
+Vo= x*ZC
 
 disp("------------------")
 disp("resposta:")
 disp("------------------")
 disp("")
+Vo = to_pd(Vo)           % polar display
 
 %X  = to_pd(X)           % polar display
 
